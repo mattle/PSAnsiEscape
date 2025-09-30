@@ -59,7 +59,7 @@ Set-AnsiFormat -Text "Important" -Bold -Underline
 ```
 
 **Available Formats:**
-- Bold, Italic, Underline, Strikethrough, Dim, Blink, Reverse
+- Bold, Italic, Underline, Strikethrough, Dim, Blink, Invisible, Reverse
 
 ### Move-AnsiCursor
 Move the cursor position.
@@ -175,7 +175,7 @@ This module works with:
 - Windows Terminal
 - Most modern terminal emulators
 
-**Note:** Some older terminals or the legacy Windows console may have limited ANSI support.
+**Note:** Some older terminals or the legacy Windows console may have limited ANSI support. The invisible mode (`-Invisible`) may not be supported in all terminal environments, though the ANSI codes will still be generated correctly.
 
 ## License
 

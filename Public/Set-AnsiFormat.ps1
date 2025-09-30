@@ -27,6 +27,9 @@ function Set-AnsiFormat {
     .PARAMETER Blink
         Make the text blink.
     
+    .PARAMETER Invisible
+        Make the text invisible/hidden.
+    
     .PARAMETER Reverse
         Reverse foreground and background colors.
     
@@ -41,6 +44,9 @@ function Set-AnsiFormat {
         
     .EXAMPLE
         Set-AnsiFormat -Text "Attention!" -Blink
+        
+    .EXAMPLE
+        Set-AnsiFormat -Text "Hidden text" -Invisible
     #>
     [CmdletBinding()]
     param(
@@ -53,6 +59,7 @@ function Set-AnsiFormat {
         [switch]$Strikethrough,
         [switch]$Dim,
         [switch]$Blink,
+        [switch]$Invisible,
         [switch]$Reverse,
         
         [bool]$Reset = $true
@@ -67,6 +74,7 @@ function Set-AnsiFormat {
         if ($Underline) { $codes += '4' }
         if ($Blink) { $codes += '5' }
         if ($Reverse) { $codes += '7' }
+        if ($Invisible) { $codes += '8' }
         if ($Strikethrough) { $codes += '9' }
         
         if ($codes.Count -gt 0) {
