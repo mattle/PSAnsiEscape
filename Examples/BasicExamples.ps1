@@ -41,9 +41,6 @@ Write-Host "`n=== Cursor Movement Example ===" -ForegroundColor Cyan
 Write-Host "Watch the cursor move..."
 Start-Sleep -Seconds 1
 
-# Save current position
-Move-AnsiCursor -SavePosition
-
 # Move around and write text
 Move-AnsiCursor -Down 2
 Write-Host "Line 1" -NoNewline
@@ -53,9 +50,6 @@ Move-AnsiCursor -Down 1 -Right 6
 Write-Host "Line 3" -NoNewline
 
 Start-Sleep -Seconds 2
-
-# Restore position
-Move-AnsiCursor -RestorePosition
 
 # Screen Clearing Example (commented out to avoid clearing the console)
 <#
