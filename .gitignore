@@ -47,3 +47,6 @@ $RECYCLE.BIN/
 # Temporary files
 *.bak
 *.backup
+
+# Agent configs
+WARP.md
