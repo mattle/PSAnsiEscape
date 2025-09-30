@@ -10,6 +10,8 @@ A PowerShell module that makes using ANSI escape sequences in the terminal easy.
 - **Screen Manipulation**: Clear screen, lines, and scroll functionality
 - **Custom Sequences**: Create custom ANSI escape sequences
 
+![Examples](Examples/example.png)
+
 ## Installation
 
 1. Copy the module folder to one of your PowerShell module paths:
@@ -153,10 +155,10 @@ Move-AnsiCursor -RestorePosition
 
 ### Pipeline Usage
 ```powershell
-"Hello", "World" | ForEach-Object { 
-    $_ | Set-AnsiColor -ForegroundColor (Get-Random -InputObject @('Red', 'Green', 'Blue', 'Yellow')) 
-} | ForEach-Object { 
-    Write-Host $_ 
+"Hello", "World" | ForEach-Object {
+    $_ | Set-AnsiColor -ForegroundColor (Get-Random -InputObject @('Red', 'Green', 'Blue', 'Yellow'))
+} | ForEach-Object {
+    Write-Host $_
 }
 ```
 
