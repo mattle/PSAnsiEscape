@@ -24,6 +24,9 @@ function Set-AnsiFormat {
     .PARAMETER Dim
         Make the text dim/faint.
     
+    .PARAMETER Blink
+        Make the text blink.
+    
     .PARAMETER Reverse
         Reverse foreground and background colors.
     
@@ -35,6 +38,9 @@ function Set-AnsiFormat {
         
     .EXAMPLE
         Set-AnsiFormat -Text "Important" -Bold -Underline
+        
+    .EXAMPLE
+        Set-AnsiFormat -Text "Attention!" -Blink
     #>
     [CmdletBinding()]
     param(
@@ -46,6 +52,7 @@ function Set-AnsiFormat {
         [switch]$Underline,
         [switch]$Strikethrough,
         [switch]$Dim,
+        [switch]$Blink,
         [switch]$Reverse,
         
         [bool]$Reset = $true
@@ -58,6 +65,7 @@ function Set-AnsiFormat {
         if ($Dim) { $codes += '2' }
         if ($Italic) { $codes += '3' }
         if ($Underline) { $codes += '4' }
+        if ($Blink) { $codes += '5' }
         if ($Reverse) { $codes += '7' }
         if ($Strikethrough) { $codes += '9' }
         

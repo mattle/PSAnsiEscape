@@ -59,7 +59,7 @@ Set-AnsiFormat -Text "Important" -Bold -Underline
 ```
 
 **Available Formats:**
-- Bold, Italic, Underline, Strikethrough, Dim, Reverse
+- Bold, Italic, Underline, Strikethrough, Dim, Blink, Reverse
 
 ### Move-AnsiCursor
 Move the cursor position.

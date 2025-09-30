@@ -20,6 +20,7 @@ Write-Host (Set-AnsiFormat -Text "Italic Text" -Italic)
 Write-Host (Set-AnsiFormat -Text "Underlined Text" -Underline)
 Write-Host (Set-AnsiFormat -Text "Bold and Underlined" -Bold -Underline)
 Write-Host (Set-AnsiFormat -Text "Dim Text" -Dim)
+Write-Host (Set-AnsiFormat -Text "Blinking Text" -Blink)
 
 # Combined Color and Format
 Write-Host "`n=== Combined Examples ===" -ForegroundColor Cyan
