@@ -1,0 +1,49 @@
+# PowerShell Module .gitignore
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# PowerShell specific
+*.ps1xml
+*.clixml
+*.log
+*.tmp
+*.temp
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# IDE files
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.bak
+*.backup
