@@ -47,9 +47,9 @@ Move-AnsiCursor -SavePosition
 # Move around and write text
 Move-AnsiCursor -Down 2
 Write-Host "Line 1" -NoNewline
-Move-AnsiCursor -Down 1 -Left 6
+Move-AnsiCursor -Down 1 -Right 6
 Write-Host "Line 2" -NoNewline
-Move-AnsiCursor -Down 1 -Left 6
+Move-AnsiCursor -Down 1 -Right 6
 Write-Host "Line 3" -NoNewline
 
 Start-Sleep -Seconds 2
