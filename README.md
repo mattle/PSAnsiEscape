@@ -16,7 +16,10 @@ A PowerShell module that makes using ANSI escape sequences in the terminal easy.
 - **Custom Sequences**: Create custom ANSI escape sequences
 - **Advanced Features**: Query cursor position, terminal detection
 
-![Examples](Examples/example.png)
+<figure>
+    <img src="Examples/example.png" alt="Console output showing various usage examples">
+    <figcaption>Run Examples/BasicExamples.ps1 to view these examples in your terminal</figcaption>
+</figure>
 
 ## Installation
 
@@ -256,38 +259,38 @@ Write-Host (Set-AnsiFormat -Text "Important Notice" -Bold -Underline)
 Use-AnsiAlternateScreen -ClearScreen -SaveCursor -ScriptBlock {
     # Hide cursor for cleaner display
     Set-AnsiCursor -Hide
-    
+
     # Set window title
     Set-AnsiWindowTitle -Title "System Dashboard"
-    
+
     # Create header with RGB colors
     $header = Set-AnsiTrueColor -Text "  SYSTEM STATUS DASHBOARD  " -HexColor "#FFFFFF" -BackgroundHexColor "#0066CC"
     $header = Set-AnsiFormat -Text $header -Bold
-    
+
     Move-AnsiCursor -Row 2 -Column 20
     Write-Host $header
-    
+
     # Status items with 256-colors
     Move-AnsiCursor -Row 4 -Column 5
     Write-Host "CPU Usage: " -NoNewline
     Write-Host (Set-Ansi256Color -Text "45%" -ForegroundColor 82) # Bright green
-    
+
     Move-AnsiCursor -Row 5 -Column 5
     Write-Host "Memory: " -NoNewline
     Write-Host (Set-Ansi256Color -Text "78%" -ForegroundColor 214) # Orange
-    
+
     Move-AnsiCursor -Row 6 -Column 5
     Write-Host "Disk Space: " -NoNewline
     Write-Host (Set-Ansi256Color -Text "23%" -ForegroundColor 46) # Green
-    
+
     # Add a hyperlink
     Move-AnsiCursor -Row 8 -Column 5
     Write-Host "For more info: " -NoNewline
     Write-Host (New-AnsiHyperlink -Url "https://docs.microsoft.com/powershell" -Text "PowerShell Docs")
-    
+
     Move-AnsiCursor -Row 10 -Column 5
     Set-AnsiFormat -Text "Press Enter to continue..." -Italic | Write-Host
-    
+
     # Show cursor and wait
     Set-AnsiCursor -Show
     Read-Host
@@ -301,7 +304,7 @@ for ($i = 0; $i -lt 50; $i++) {
     $red = [int](255 * ($i / 50))
     $green = [int](255 * (1 - $i / 50))
     $blue = 100
-    
+
     $coloredText = Set-AnsiTrueColor -Text "█" -Red $red -Green $green -Blue $blue
     Write-Host $coloredText -NoNewline
 }
