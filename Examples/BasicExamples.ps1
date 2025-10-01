@@ -198,10 +198,12 @@ for ($i = 0; $i -lt 5; $i++) {
         Move-AnsiCursor -Right 2
     }
 }
-Move-AnsiCursor -Down 1 -Left 8
+Move-AnsiCursor -Down 1
+Move-AnsiCursor -Left 8
 for ($i = 0; $i -lt 3; $i++) {
     Write-Host "*" -NoNewline
-    Move-AnsiCursor -Down 1 -Left 1
+    Move-AnsiCursor -Down 1
+    Move-AnsiCursor -Left 1
 }
 for ($i = 0; $i -lt 5; $i++) {
     Write-Host "*" -NoNewline
@@ -276,7 +278,8 @@ Write-Host "This is line 2"
 Write-Host "This is line 3 - will be partially cleared"
 
 Start-Sleep -Seconds 1
-Move-AnsiCursor -Up 1 -Column 15
+Move-AnsiCursor -Up 1
+Move-AnsiCursor -Column 15
 Clear-AnsiScreen -FromCursorToEndOfLine
 Write-Host "<- Line cleared from cursor"
 
