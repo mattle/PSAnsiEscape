@@ -23,17 +23,4 @@ Write-Host (Set-AnsiFormat -Text "Dim Text" -Dim)
 Write-Host (Set-AnsiFormat -Text "Blinking Text" -Blink)
 Write-Host (Set-AnsiFormat -Text "Secrete message!" -Invisible), "<- Invisible text!"
 
-# Combined Color and Format
-Write-Host "`n=== Combined Examples ===" -ForegroundColor Cyan
-$text = "Important Notice"
-$text = Set-AnsiColor -Text $text -ForegroundColor Red -BackgroundColor Yellow
-$text = Set-AnsiFormat -Text $text -Bold
-Write-Host $text
-
-# Custom Sequence Example
-Write-Host "`n=== Custom Sequence Example ===" -ForegroundColor Cyan
-$customRed = New-AnsiSequence -Code "91m" -Raw  # Bright red
-$reset = New-AnsiSequence -Code "0m" -Raw       # Reset
-Write-Host "${customRed}Custom bright red text${reset}"
-
 Write-Host "`n=== Examples Complete ===`n"
