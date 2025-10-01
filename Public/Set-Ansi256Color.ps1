@@ -115,7 +115,7 @@ function Get-Ansi256ColorChart {
     if ($ShowStandard) {
         Write-Host "`nStandard Colors (0-15):" -ForegroundColor Cyan
         for ($i = 0; $i -lt 16; $i++) {
-            $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $i) -BackgroundColor $i -ForegroundColor (if ($i -lt 8) { 255 } else { 0 })
+            $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $i) -BackgroundColor $i -ForegroundColor ($i -lt 8 ? 255 : 0)
             Write-Host $colorText -NoNewline
             if (($i + 1) % 8 -eq 0) { Write-Host "" }
         }
@@ -128,7 +128,7 @@ function Get-Ansi256ColorChart {
         for ($g = 0; $g -lt 6; $g++) {
             for ($b = 0; $b -lt 6; $b++) {
                 $colorIndex = 16 + (36 * $r) + (6 * $g) + $b
-                $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $colorIndex) -BackgroundColor $colorIndex -ForegroundColor (if ($colorIndex -lt 100) { 255 } else { 0 })
+                $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $colorIndex) -BackgroundColor $colorIndex -ForegroundColor ($colorIndex -lt 100 ? 255 : 0)
                 Write-Host $colorText -NoNewline
             }
             Write-Host "  " -NoNewline
@@ -139,7 +139,7 @@ function Get-Ansi256ColorChart {
     if ($ShowGrayscale) {
         Write-Host "`nGrayscale Colors (232-255):" -ForegroundColor Cyan
         for ($i = 232; $i -lt 256; $i++) {
-            $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $i) -BackgroundColor $i -ForegroundColor (if ($i -lt 244) { 255 } else { 0 })
+            $colorText = Set-Ansi256Color -Text (" {0:D3} " -f $i) -BackgroundColor $i -ForegroundColor ($i -lt 244 ? 255 : 0)
             Write-Host $colorText -NoNewline
             if (($i - 231) % 8 -eq 0) { Write-Host "" }
         }
