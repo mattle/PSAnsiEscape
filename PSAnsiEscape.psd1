@@ -5,7 +5,7 @@
     RootModule = 'PSAnsiEscape.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '2.0.0'
 
     # Supported PowerShell versions
     PowerShellVersion = '5.1'
@@ -24,7 +24,7 @@
     Copyright = '(c) 2025. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description = 'A PowerShell module that makes using ANSI escape sequences in the terminal easy. Provides functions for colors, text formatting, cursor movement, and screen manipulation.'
+    Description = 'A PowerShell module that makes using ANSI escape sequences in the terminal easy. Provides functions for colors (including 256-color and 24-bit RGB), text formatting, cursor movement, screen manipulation, hyperlinks, and advanced terminal features.'
 
     # Functions to export from this module
     FunctionsToExport = @(
@@ -32,7 +32,20 @@
         'Set-AnsiFormat',
         'Move-AnsiCursor',
         'Clear-AnsiScreen',
-        'New-AnsiSequence'
+        'New-AnsiSequence',
+        'Set-AnsiCursor',
+        'Get-AnsiCursorPosition',
+        'Set-AnsiTrueColor',
+        'Set-Ansi256Color',
+        'Get-Ansi256ColorChart',
+        'Set-AnsiWindowTitle',
+        'Reset-AnsiWindowTitle',
+        'Enter-AnsiAlternateScreen',
+        'Exit-AnsiAlternateScreen',
+        'Use-AnsiAlternateScreen',
+        'New-AnsiHyperlink',
+        'Test-AnsiHyperlinkSupport',
+        'Write-AnsiHyperlink'
     )
 
     # Cmdlets to export from this module
@@ -48,7 +61,7 @@
     PrivateData = @{
         PSData = @{
             # Tags applied to this module
-            Tags = @('ANSI', 'Terminal', 'Console', 'Color', 'Formatting')
+            Tags = @('ANSI', 'Terminal', 'Console', 'Color', 'Formatting', 'TrueColor', '256Color', 'RGB', 'Hyperlinks', 'AlternateScreen')
 
             # A URL to the license for this module.
             LicenseUri = ''
@@ -60,7 +73,7 @@
             IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = 'Initial release of PSAnsiEscape module with support for colors, formatting, cursor movement, and screen manipulation.'
+            ReleaseNotes = 'Version 2.0.0: Major update adding 24-bit RGB colors, 256-color palette, cursor control, window titles, alternate screen buffer, and hyperlink support.'
         }
     }
 }

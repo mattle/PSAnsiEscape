@@ -22,7 +22,20 @@ $PublicFunctions = @(
     'Set-AnsiFormat', 
     'Move-AnsiCursor',
     'Clear-AnsiScreen',
-    'New-AnsiSequence'
+    'New-AnsiSequence',
+    'Set-AnsiCursor',
+    'Get-AnsiCursorPosition',
+    'Set-AnsiTrueColor',
+    'Set-Ansi256Color',
+    'Get-Ansi256ColorChart',
+    'Set-AnsiWindowTitle',
+    'Reset-AnsiWindowTitle',
+    'Enter-AnsiAlternateScreen',
+    'Exit-AnsiAlternateScreen',
+    'Use-AnsiAlternateScreen',
+    'New-AnsiHyperlink',
+    'Test-AnsiHyperlinkSupport',
+    'Write-AnsiHyperlink'
 )
 
 Export-ModuleMember -Function $PublicFunctions
