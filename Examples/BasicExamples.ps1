@@ -21,7 +21,7 @@ Write-Host (Set-AnsiFormat -Text "Underlined Text" -Underline)
 Write-Host (Set-AnsiFormat -Text "Bold and Underlined" -Bold -Underline)
 Write-Host (Set-AnsiFormat -Text "Dim Text" -Dim)
 Write-Host (Set-AnsiFormat -Text "Blinking Text" -Blink)
-Write-Host (Set-AnsiFormat -Text "Invisible Text (you may not see this)" -Invisible)
+Write-Host (Set-AnsiFormat -Text "Secrete message!" -Invisible), "<- Invisible text!"
 
 # Combined Color and Format
 Write-Host "`n=== Combined Examples ===" -ForegroundColor Cyan
@@ -29,37 +29,6 @@ $text = "Important Notice"
 $text = Set-AnsiColor -Text $text -ForegroundColor Red -BackgroundColor Yellow
 $text = Set-AnsiFormat -Text $text -Bold
 Write-Host $text
-
-# Pipeline Examples
-Write-Host "`n=== Pipeline Examples ===" -ForegroundColor Cyan
-@("Red", "Green", "Blue") | ForEach-Object {
-    $_ | Set-AnsiColor -ForegroundColor $_ | Set-AnsiFormat -Bold
-} | ForEach-Object {
-    Write-Host $_
-}
-
-# Cursor Movement Example
-Write-Host "`n=== Cursor Movement Example ===" -ForegroundColor Cyan
-Write-Host "Watch the cursor move..."
-Start-Sleep -Seconds 1
-
-# Move around and write text
-Move-AnsiCursor -Down 2
-Write-Host "Line 1" -NoNewline
-Move-AnsiCursor -Down 1 -Right 6
-Write-Host "Line 2" -NoNewline
-Move-AnsiCursor -Down 1 -Right 6
-Write-Host "Line 3" -NoNewline
-
-Start-Sleep -Seconds 2
-
-# Screen Clearing Example (commented out to avoid clearing the console)
-<#
-Write-Host "`n=== Screen Clearing Example ===" -ForegroundColor Cyan
-Write-Host "This would clear the screen..."
-# Clear-AnsiScreen -All
-# Move-AnsiCursor -Home
-#>
 
 # Custom Sequence Example
 Write-Host "`n=== Custom Sequence Example ===" -ForegroundColor Cyan
