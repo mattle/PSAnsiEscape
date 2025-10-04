@@ -82,58 +82,6 @@ function New-AnsiHyperlink {
     }
 }
 
-function Test-AnsiHyperlinkSupport {
-    <#
-    .SYNOPSIS
-        Test if the current terminal supports ANSI hyperlinks.
-    
-    .DESCRIPTION
-        This function attempts to detect if the current terminal supports ANSI hyperlinks
-        by checking environment variables and terminal characteristics.
-    
-    .EXAMPLE
-        Test-AnsiHyperlinkSupport
-        Returns $true if hyperlinks are likely supported, $false otherwise
-        
-    .OUTPUTS
-        Boolean indicating likely hyperlink support
-        
-    .NOTES
-        This is a best-effort detection and may not be 100% accurate.
-        Some terminals may support hyperlinks but not be detected.
-    #>
-    [CmdletBinding()]
-    param()
-    
-    # Check for known terminal types that support hyperlinks
-    $termProgram = $env:TERM_PROGRAM
-    $wtSession = $env:WT_SESSION
-    $term = $env:TERM
-    
-    # Windows Terminal
-    if ($wtSession) {
-        return $true
-    }
-    
-    # VS Code Terminal
-    if ($termProgram -eq 'vscode') {
-        return $true
-    }
-    
-    # iTerm2
-    if ($termProgram -eq 'iTerm.app') {
-        return $true
-    }
-    
-    # Check for other indicators
-    if ($term -match 'xterm-256color' -or $term -match 'screen') {
-        # Might support hyperlinks, but not certain
-        return $null  # Unknown
-    }
-    
-    # Default to false for unknown terminals
-    return $false
-}
 
 function Write-AnsiHyperlink {
     <#

@@ -242,19 +242,8 @@ Wait-UserInput
 #region Hyperlink Examples
 Write-SectionHeader "Hyperlink Support with New-AnsiHyperlink"
 
-# Test hyperlink support
-$hyperlinkSupported = Test-AnsiHyperlinkSupport
-if ($hyperlinkSupported) {
-    Write-Host "✅ Terminal supports hyperlinks!"
-}
-elseif ($hyperlinkSupported -eq $false) {
-    Write-Host "⚠️ Terminal may not support hyperlinks (will display as plain text)"
-}
-else {
-    Write-Host "❓ Hyperlink support unknown"
-}
-
-Write-Host "`nHyperlink examples (try clicking if supported):"
+Write-Host "🔗 Hyperlink examples (try clicking if your terminal supports them):"
+Write-Host "Note: Hyperlink support varies by terminal (Windows Terminal, VS Code, iTerm2, etc.)"
 Write-Host "Visit: " -NoNewline
 Write-Host (New-AnsiHyperlink -Url "https://github.com/PowerShell/PowerShell" -Text "PowerShell GitHub")
 
@@ -470,9 +459,6 @@ Write-Host (Set-AnsiFormat -Text "PSAnsiEscape v2.0 Examples Complete!" -Bold) -
 Write-Host ""
 
 Write-Host "💡 Pro Tips:"
-Write-Host "   • Use " -NoNewline
-Write-Host (Set-AnsiFormat -Text "Test-AnsiHyperlinkSupport" -Bold) -NoNewline
-Write-Host " to detect hyperlink support"
 
 Write-Host "   • Combine " -NoNewline
 Write-Host (Set-AnsiFormat -Text "Set-AnsiTrueColor" -Bold) -NoNewline

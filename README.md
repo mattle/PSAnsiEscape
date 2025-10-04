@@ -231,10 +231,6 @@ New-AnsiHyperlink -Url "mailto:admin@example.com" -Text "Contact Admin"
 # Write directly to console with formatting
 Write-AnsiHyperlink -Url "https://github.com" -Text "GitHub" -ForegroundColor Blue
 
-# Test terminal support
-if (Test-AnsiHyperlinkSupport) {
-    Write-Host "Terminal supports hyperlinks!"
-}
 ```
 
 ## Examples
@@ -350,7 +346,6 @@ Write-Host "" # New line
 **Legend:** ✅ Full Support, ⚠️ Partial Support, ❌ No Support
 
 **Notes:**
-- Use `Test-AnsiHyperlinkSupport` to detect hyperlink support
 - 256-color support varies on older terminals
 - Some features may not work in non-interactive sessions
 

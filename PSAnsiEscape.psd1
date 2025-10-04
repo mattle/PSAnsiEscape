@@ -44,7 +44,6 @@
         'Exit-AnsiAlternateScreen',
         'Use-AnsiAlternateScreen',
         'New-AnsiHyperlink',
-        'Test-AnsiHyperlinkSupport',
         'Write-AnsiHyperlink'
     )
 
