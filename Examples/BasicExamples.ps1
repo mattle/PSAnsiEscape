@@ -49,7 +49,7 @@ Set-AnsiWindowTitle -Title "PSAnsiEscape v2.0 - Comprehensive Examples"
 # Welcome header with RGB colors
 $welcomeText = Set-AnsiTrueColor -Text "  PSAnsiEscape v2.0 - Comprehensive Examples  " -HexColor "#FFFFFF" -BackgroundHexColor "#0066CC"
 $welcomeText = Set-AnsiFormat -Text $welcomeText -Bold
-Write-Host "`n$welcomeText`n" 
+Write-Host "`n$welcomeText`n"
 
 Write-Host "This script demonstrates all the ANSI escape sequence functions available in PSAnsiEscape v2.0"
 Write-Host "For the best experience, run this in Windows Terminal, VS Code, or another modern terminal."
@@ -122,7 +122,7 @@ for ($i = 0; $i -lt 40; $i++) {
     $c = 1
     $x = $c * (1 - [Math]::Abs((($hue / 60) % 2) - 1))
     $m = 0
-    
+
     switch ([Math]::Floor($hue / 60)) {
         0 { $r = $c; $g = $x; $b = 0 }
         1 { $r = $x; $g = $c; $b = 0 }
@@ -131,11 +131,11 @@ for ($i = 0; $i -lt 40; $i++) {
         4 { $r = $x; $g = 0; $b = $c }
         5 { $r = $c; $g = 0; $b = $x }
     }
-    
+
     $red = [int](($r + $m) * 255)
     $green = [int](($g + $m) * 255)
     $blue = [int](($b + $m) * 255)
-    
+
     Write-Host (Set-AnsiTrueColor -Text "█" -Red $red -Green $green -Blue $blue) -NoNewline
 }
 Write-Host "" # New line
@@ -285,46 +285,46 @@ Wait-UserInput
 #region Alternate Screen Examples
 if ($TestAlternateScreen) {
     Write-SectionHeader "Alternate Screen Buffer Demo"
-    
+
     Write-Host "About to switch to alternate screen buffer for 5 seconds..."
     Write-Host "The current content will be preserved and restored."
     Wait-UserInput "Press Enter to continue to alternate screen..."
-    
+
     Use-AnsiAlternateScreen -ClearScreen -SaveCursor -ScriptBlock {
         # In alternate screen
         Set-AnsiCursor -Hide
-        
+
         # Create a fancy display
         $header = Set-AnsiTrueColor -Text "  ALTERNATE SCREEN DEMO  " -HexColor "#FFFFFF" -BackgroundHexColor "#CC0066"
         $header = Set-AnsiFormat -Text $header -Bold
-        
+
         Move-AnsiCursor -Row 5 -Column 20
         Write-Host $header
-        
+
         Move-AnsiCursor -Row 7 -Column 10
         Write-Host "🌟 This is displayed in the alternate screen buffer"
-        
+
         Move-AnsiCursor -Row 9 -Column 10
         Write-Host "🔄 Your original terminal content is preserved"
-        
+
         Move-AnsiCursor -Row 11 -Column 10
         Write-Host "⏱️  Returning to main screen in 5 seconds..."
-        
+
         # Draw a simple progress bar
         Move-AnsiCursor -Row 13 -Column 10
         Write-Host "Progress: [" -NoNewline
-        
+
         for ($i = 1; $i -le 20; $i++) {
             Start-Sleep -Milliseconds 200
             Write-Host (Set-AnsiTrueColor -Text "█" -HexColor "#00FF00") -NoNewline
         }
-        
+
         Write-Host "] Complete!"
         Start-Sleep -Seconds 1
-        
+
         Set-AnsiCursor -Show
     }
-    
+
     Write-Host "✅ Returned from alternate screen - original content preserved!"
 }
 else {
@@ -332,101 +332,6 @@ else {
     Write-Host "💡 Use the -TestAlternateScreen parameter to see the alternate screen demo"
     Write-Host "   (This preserves your current terminal content)"
 }
-Wait-UserInput
-#endregion
-
-#region Advanced Interactive Example
-Write-SectionHeader "Advanced Interactive Example - Mini Dashboard"
-
-Write-Host "Creating a mini system dashboard with multiple features..."
-Wait-UserInput
-
-# Save current state
-Move-AnsiCursor -SavePosition
-Set-AnsiCursor -Hide
-
-try {
-    # Clear area for dashboard
-    for ($i = 0; $i -lt 15; $i++) {
-        Write-Host (" " * 80)
-    }
-    
-    # Move back to start
-    Move-AnsiCursor -Up 15
-    
-    # Dashboard header
-    $dashboardTitle = Set-AnsiTrueColor -Text "  POWERSHELL ANSI DASHBOARD  " -HexColor "#FFFFFF" -BackgroundHexColor "#0066CC"
-    $dashboardTitle = Set-AnsiFormat -Text $dashboardTitle -Bold
-    Write-Host $dashboardTitle
-    Write-Host ""
-    
-    # Status section with 256 colors
-    Write-Host "📊 System Status:"
-    Write-Host "   CPU Usage: " -NoNewline
-    Write-Host (Set-Ansi256Color -Text "45%" -ForegroundColor 82) -NoNewline  # Bright green
-    Write-Host " (Good)"
-    
-    Write-Host "   Memory:    " -NoNewline  
-    Write-Host (Set-Ansi256Color -Text "73%" -ForegroundColor 214) -NoNewline  # Orange
-    Write-Host " (Moderate)"
-    
-    Write-Host "   Network:   " -NoNewline
-    Write-Host (Set-Ansi256Color -Text "Online" -ForegroundColor 46) -NoNewline  # Green
-    Write-Host " (Connected)"
-    
-    Write-Host ""
-    
-    # Color gradient bar
-    Write-Host "🌈 Color Capability: "
-    Write-Host "   16-color:  " -NoNewline
-    Write-Host (Set-AnsiColor -Text "████" -ForegroundColor Red) -NoNewline
-    Write-Host (Set-AnsiColor -Text "████" -ForegroundColor Green) -NoNewline
-    Write-Host (Set-AnsiColor -Text "████" -ForegroundColor Blue) -NoNewline
-    Write-Host (Set-AnsiColor -Text "████" -ForegroundColor Yellow)
-    
-    Write-Host "   256-color: " -NoNewline
-    for ($i = 196; $i -le 201; $i++) {
-        Write-Host (Set-Ansi256Color -Text "██" -ForegroundColor $i) -NoNewline
-    }
-    Write-Host ""
-    
-    Write-Host "   RGB Color: " -NoNewline
-    for ($i = 0; $i -lt 16; $i++) {
-        $r = [int](255 * ($i / 15))
-        $g = [int](128 + 127 * [Math]::Sin($i / 3))
-        $b = [int](255 - (255 * ($i / 15)))
-        Write-Host (Set-AnsiTrueColor -Text "█" -Red $r -Green $g -Blue $b) -NoNewline
-    }
-    Write-Host ""
-    
-    Write-Host ""
-    
-    # Links section
-    Write-Host "🔗 Quick Links:"
-    Write-Host "   Documentation: " -NoNewline
-    Write-Host (New-AnsiHyperlink -Url "https://docs.microsoft.com/powershell" -Text "PowerShell Docs")
-    Write-Host "   Gallery:       " -NoNewline
-    Write-Host (New-AnsiHyperlink -Url "https://www.powershellgallery.com" -Text "PowerShell Gallery")
-    
-    Write-Host ""
-    Write-Host (Set-AnsiFormat -Text "Dashboard will close in 5 seconds..." -Italic) -ForegroundColor Gray
-    
-    # Countdown
-    for ($countdown = 5; $countdown -gt 0; $countdown--) {
-        Move-AnsiCursor -Up 1
-        Clear-AnsiScreen -FromCursorToEndOfLine
-        Write-Host (Set-AnsiFormat -Text "Dashboard will close in $countdown seconds..." -Italic) -ForegroundColor Gray
-        Start-Sleep -Seconds 1
-    }
-}
-finally {
-    # Restore cursor and clean up
-    Set-AnsiCursor -Show
-    Move-AnsiCursor -RestorePosition
-    Move-AnsiCursor -Down 16
-}
-
-Write-Host "✅ Dashboard demo complete!"
 Wait-UserInput
 #endregion
 
@@ -460,6 +365,6 @@ Write-Host "📖 For more information, check the README.md file or use Get-Help 
 Reset-AnsiWindowTitle
 
 Write-Host ""
-Write-Host (Set-AnsiTrueColor -Text "Thank you for using PSAnsiEscape! 🚀" -HexColor "#FF6B35") 
+Write-Host (Set-AnsiTrueColor -Text "Thank you for using PSAnsiEscape! 🚀" -HexColor "#FF6B35")
 Write-Host ""
 #endregion
