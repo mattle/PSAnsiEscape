@@ -13,7 +13,6 @@ A PowerShell module that makes using ANSI escape sequences in the terminal easy.
 - **Screen Manipulation**: Clear screen, lines, scroll, and alternate screen buffer
 - **Window Titles**: Set terminal window and tab titles
 - **Hyperlinks**: Create clickable links in supported terminals
-- **Custom Sequences**: Create custom ANSI escape sequences
 - **Advanced Features**: Query cursor position, terminal detection
 
 <figure>
@@ -105,17 +104,6 @@ Clear-AnsiScreen -FromCursorToEndOfLine
 
 # Scroll screen
 Clear-AnsiScreen -ScrollUp 5
-```
-
-### New-AnsiSequence
-Create custom ANSI escape sequences.
-
-```powershell
-# Get raw sequence
-$redColor = New-AnsiSequence -Code "31m" -Raw
-
-# Execute sequence directly
-New-AnsiSequence -Code "2J"  # Clear screen
 ```
 
 ### Set-AnsiTrueColor

@@ -22,7 +22,6 @@ $PublicFunctions = @(
     'Set-AnsiFormat', 
     'Move-AnsiCursor',
     'Clear-AnsiScreen',
-    'New-AnsiSequence',
     'Set-AnsiCursor',
     'Get-AnsiCursorPosition',
     'Set-AnsiTrueColor',

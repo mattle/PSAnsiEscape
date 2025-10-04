@@ -335,27 +335,6 @@ else {
 Wait-UserInput
 #endregion
 
-#region Custom Sequences Example
-Write-SectionHeader "Custom ANSI Sequences with New-AnsiSequence"
-
-Write-Host "Creating custom sequences:"
-
-# Get some raw sequences
-$redSequence = New-AnsiSequence -Code "31m" -Raw
-$resetSequence = New-AnsiSequence -Code "0m" -Raw
-$boldSequence = New-AnsiSequence -Code "1m" -Raw
-
-Write-Host "Raw red sequence: $redSequence (displayed as text)"
-Write-Host "Using custom sequence: ${redSequence}This text is red${resetSequence}"
-Write-Host "Combined sequences: ${boldSequence}${redSequence}Bold Red Text${resetSequence}"
-
-Write-Host "`nExecuting sequences directly:"
-New-AnsiSequence -Code "32m"  # Green
-Write-Host "This text should be green"
-New-AnsiSequence -Code "0m"   # Reset
-Wait-UserInput
-#endregion
-
 #region Advanced Interactive Example
 Write-SectionHeader "Advanced Interactive Example - Mini Dashboard"
 
