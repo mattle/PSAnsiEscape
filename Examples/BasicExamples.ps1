@@ -39,6 +39,7 @@ function Wait-UserInput {
         Write-Host "`n" -NoNewline
         Write-Host (Set-AnsiFormat -Text $Message -Italic) -ForegroundColor Gray
         Read-Host | Out-Null
+        Clear-Host
     }
 }
 
