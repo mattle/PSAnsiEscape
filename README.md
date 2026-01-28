@@ -22,7 +22,7 @@ A PowerShell module that makes using ANSI escape sequences in the terminal easy.
 
 ## Installation
 
-1. Copy the module folder to one of your PowerShell module paths:
+1. Copy the module folder to one of your PowerShell module paths, which can be found with:
    ```powershell
    $env:PSModulePath -split ';'
    ```
